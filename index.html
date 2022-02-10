@@ -32,45 +32,54 @@
       <input class="form-control" id="thesis-title" placeholder="Thesis Title">
   </div>
   <div class="form-group row">
-  <label for="Thesis Title" class="col-form-label">Graduation Semester</label>
+  <label for="Thesis Title" class="col-form-label">Degree Date</label>
+  <div class="col">
   <select class="form-select" id="last-semester">
-     <option>Make a selection</option>
+     <option>Semester</option>
      <option value="February">Fall</option>
      <option value="May">Spring</option>
      <option value="October">Summer</option>
    </select>
  </div>
- <div class="form-group row">
-   <label for="Thesis Title" class="col-form-label">Graduation Year</label>
-     <input type="number" class="form-control" id="grad-year" placeholder="Graduation Year">
+ <div class="form-group col">
+     <input type="number" class="form-control" id="grad-year" placeholder="Year">
  </div>
+</div>
 <div class="form-group row">
 <label for="grad-program" class="col-form-label">Program</label>
 <select class="form-select" id="grad-program">
    <option>Make a selection</option>
    <option value="Master of Science, Architecture, School of Architecture">Architecture -- MS</option>
-   <option>Architecture & Urban Design --MSAUD</option>
-   <option>Art & Design Education -- MA</option>
-   <option>Art Therapy & Creativity Development -- MPS</option>
-   <option>City & Regional Planning -- MS</option>
-   <option>Communications Design -- MFA</option>
-   <option>Dance / Movement Therapy -- MS</option>
-   <option>Digital Arts -- MFA</option>
-   <option>Facilities Management -- MS</option>
-   <option>Fine Arts -- MFA</option>
-   <option>Historic Preservation -- MS</option>
-   <option>History of Art & Design -- MA</option>
-   <option>History of Art & Design -- MA/MFA</option>
-   <option>History of Art & Design -- MA/MSLIS</option>
-   <option>Industrial Design -- MID</option>
-   <option>Interior Design -- MFA</option>
-   <option>Media Studies -- MFA</option>
-   <option>Performance & Performance Studies -- MFA</option>
-   <option>Photography -- MFA</option>
-   <option>Real Estate Practice -- MS</option>
-   <option>Urban Placemaking & Management -- MS</option>
+   <option value="Master of Science, Architecture and Urban Design, School of Architecture">Architecture & Urban Design --MSAUD</option>
+   <option value="Master of Art (Art and Design Education), School of Art">Art & Design Education -- MA</option>
+   <option value="Master of Professional Studies (Art Therapy and Creativity Development), School of Art">Art Therapy & Creativity Development -- MPS</option>
+   <option value="Master of Science in City and Regional Planning, School of Architecture">City & Regional Planning -- MS</option>
+   <option value="Master of Fine Arts (Communications Design), School of Design">Communications Design -- MFA</option>
+   <option value="Master of Science (Dance/Movement Therapy), School of Art">Dance / Movement Therapy -- MS</option>
+   <option value="Master of Fine Arts (Digital Arts), School of Art">Digital Arts -- MFA</option>
+   <option value="Master of Science (Facilities Management), School of Architecture">Facilities Management -- MS</option>
+   <option value="Master of Fine Arts, School of Art">Fine Arts -- MFA</option>
+   <option value="Master of Science in Historic Preservation">Historic Preservation -- MS</option>
+   <option value="Master of Art (History of Art and Design), School of Liberal Arts and Sciences">History of Art & Design -- MA</option>
+   <option value="Master of Art (History of Art and Design) Within the joint degree M.A./M.F.A. program, School of Liberal Arts and Sciences">History of Art & Design -- MA/MFA</option>
+   <option value="Master of Art (History of Art and Design) Within the joint degree M.A./M.S.L.I.S. program, School of Liberal Arts and Sciences">History of Art & Design -- MA/MSLIS</option>
+   <option value="Master of Industrial Design, School of Design">Industrial Design -- MID</option>
+   <option value="Master of Fine Arts in Interior Design, School of Design">Interior Design -- MFA</option>
+   <option value="Master of Arts (Media Studies), School of Liberal Arts and Sciences">Media Studies -- MFA</option>
+   <option value="Master of Fine Arts (Performance and Performance Studies), School of Liberal Arts and Sciences">Performance & Performance Studies -- MFA</option>
+   <option value="Master of Fine Arts in Photography, School of Art">Photography -- MFA</option>
+   <option value="Master of Science (Real Estate Practice), School of Architecture">Real Estate Practice -- MS</option>
+   <option value="Master of Science in Urban Placemaking and Management, School of Architecture">Urban Placemaking & Management -- MS</option>
    <option value="Master of Fine Arts (Writing), School of Liberal Arts and Sciences">Writing -- MFA</option>
  </select>
+</div>
+<div class="form-group row">
+<label for="doc-question" class="col-form-label">Project Type</label>
+<select class="form-select" id="doc-question">
+   <option>Make a selection</option>
+   <option value="thesis">Thesis</option>
+   <option value="demonstration of professional competance">Demonstration of professional competance</option>
+</select>
 </div>
 <a class="btn btn-primary" onclick="savePDF()">Save PDF</a>
 </form>
@@ -99,6 +108,7 @@ studentLast = document.querySelector("#last-name").value;
 gradSemester = document.querySelector("#last-semester").value;
 gradYear = document.querySelector("#grad-year").value;
 gradProgram = document.querySelector("#grad-program").value;
+capstoneDoc = document.querySelector("#doc-question").value;
 if (document.querySelector("#last-semester").value == "February"){
 gradYear= parseInt(gradYear,10)+1;
 }
@@ -108,7 +118,7 @@ doc.text(thesisTitle, 4.25, 2,{ maxWidth: 6.5, align:'center'});
 doc.text("by", 4.25, 2.75,'center');
 doc.text(studentFirst+" "+studentMiddle+" "+studentLast, 4.25, 3,'center');
 doc.text("© "+gradYear+" "+studentFirst+" "+studentMiddle+" "+studentLast, 4.25, 4,'center');
-doc.text("A thesis submitted in partial fulfillment of the requirements for the degree of "+gradProgram, 4.25, 6,{ maxWidth: 4, align:'center'});
+doc.text("A"+" "+capstoneDoc+" "+"submitted in partial fulfillment of the requirements for the degree of "+gradProgram, 4.25, 6,{ maxWidth: 4, align:'center'});
 doc.text("Pratt Institute", 4.25, 7,{ maxWidth: 4, align:'center'});
 doc.text(gradSemester+" "+gradYear, 4.25, 7.25,{ maxWidth: 4, align:'center'});
 doc.save(studentLast+"-thesis-title-page.pdf");
