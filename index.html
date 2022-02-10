@@ -84,14 +84,14 @@ var studentMiddle;
 var gradYear;
 var gradSemester;
 var gradProgram;
-
-const doc = new jsPDF({
+var doc = new jsPDF({
   orientation: "portrait",
   unit: "in",
   format: [8.5, 11]
 });
 
 function savePDF(){
+
 thesisTitle = document.querySelector("#thesis-title").value;
 studentFirst = document.querySelector("#first-name").value;
 studentMiddle = document.querySelector("#middle-name").value;
@@ -99,6 +99,9 @@ studentLast = document.querySelector("#last-name").value;
 gradSemester = document.querySelector("#last-semester").value;
 gradYear = document.querySelector("#grad-year").value;
 gradProgram = document.querySelector("#grad-program").value;
+if (document.querySelector("#last-semester").value == "February"){
+gradYear= parseInt(gradYear,10)+1;
+}
 doc.setFont("times", "normal");
 doc.setFontSize(12);
 doc.text(thesisTitle, 4.25, 2,{ maxWidth: 6.5, align:'center'});
@@ -109,6 +112,12 @@ doc.text("A thesis submitted in partial fulfillment of the requirements for the 
 doc.text("Pratt Institute", 4.25, 7,{ maxWidth: 4, align:'center'});
 doc.text(gradSemester+" "+gradYear, 4.25, 7.25,{ maxWidth: 4, align:'center'});
 doc.save(studentLast+"-thesis-title-page.pdf");
+doc = new jsPDF({
+  orientation: "portrait",
+  unit: "in",
+  format: [8.5, 11]
+});
+gradYear = document.querySelector("#grad-year").value;
 }
       </script>
   </body>
