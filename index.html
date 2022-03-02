@@ -81,6 +81,52 @@
    <option value="demonstration of professional competance">Demonstration of professional competance</option>
 </select>
 </div>
+<div class="row">
+<label for="chair of dept" class="col-form-label">Department Chair</label>
+<div class="col">
+<input type="text" class="form-control" placeholder="First name" id="chair-first-name">
+</div>
+<div class="col">
+<input type="text" class="form-control" placeholder="Middle name or initial" id="chair-middle-name">
+</div>
+<div class="col">
+<input type="text" class="form-control" placeholder="Last name" id="chair-last-name">
+</div>
+</div>
+<div class="row">
+<label for="thesis advisor" class="col-form-label">Thesis Advisor(s) or Committee Member(s)</label>
+<div class="col">
+<input aria-labelledby="committeeMemberFirstName" type="text" class="form-control" placeholder="First name" id="advisor-1-first-name">
+</div>
+<div class="col">
+<input type="text" class="form-control" placeholder="Middle name or initial" id="advisor-1-middle-name">
+</div>
+<div class="col">
+<input type="text" class="form-control" placeholder="Last name" id="advisor-1-last-name">
+</div>
+</div>
+<div class="row">
+<div class="col">
+<input aria-labelledby="committeeMemberFirstName" type="text" class="form-control" placeholder="First name" id="advisor-2-first-name">
+</div>
+<div class="col">
+<input type="text" class="form-control" placeholder="Middle name or initial" id="advisor-2-middle-name">
+</div>
+<div class="col">
+<input type="text" class="form-control" placeholder="Last name" id="advisor-2-last-name">
+</div>
+</div>
+<div class="row">
+<div class="col">
+<input aria-labelledby="committeeMemberFirstName" type="text" class="form-control" placeholder="First name" id="advisor-3-first-name">
+</div>
+<div class="col">
+<input type="text" class="form-control" placeholder="Middle name or initial" id="advisor-3-middle-name">
+</div>
+<div class="col">
+<input type="text" class="form-control" placeholder="Last name" id="advisor-3-last-name">
+</div>
+</div>
 <a class="btn btn-primary" onclick="savePDF()">Save PDF</a>
 </form>
 </div>
@@ -93,6 +139,19 @@ var studentMiddle;
 var gradYear;
 var gradSemester;
 var gradProgram;
+var chairFirst;
+var chairMiddle;
+var chairLast;
+var advisorLast1;
+var advisorMiddle1;
+var advisorFirst1;
+var advisorLast2;
+var advisorMiddle2;
+var advisorFirst2;
+var advisorLast3;
+var advisorMiddle3;
+var advisorFirst3;
+
 var doc = new jsPDF({
   orientation: "portrait",
   unit: "in",
@@ -109,6 +168,18 @@ gradSemester = document.querySelector("#last-semester").value;
 gradYear = document.querySelector("#grad-year").value;
 gradProgram = document.querySelector("#grad-program").value;
 capstoneDoc = document.querySelector("#doc-question").value;
+chairFirst = document.querySelector("#chair-first-name").value;
+chairMiddle = document.querySelector("#chair-middle-name").value;
+chairLast = document.querySelector("#chair-last-name").value;
+advisorLast1 = document.querySelector("#advisor-1-last-name").value;
+advisorMiddle1 = document.querySelector("#advisor-1-middle-name").value;
+advisorFirst1 = document.querySelector("#advisor-1-first-name").value;
+advisorLast2 = document.querySelector("#advisor-2-last-name").value;
+advisorMiddle2 = document.querySelector("#advisor-2-middle-name").value;
+advisorFirst2 = document.querySelector("#advisor-2-first-name").value;
+advisorLast3 = document.querySelector("#advisor-3-last-name").value;
+advisorMiddle3 = document.querySelector("#advisor-3-middle-name").value;
+advisorFirst3 = document.querySelector("#advisor-3-first-name").value;
 if (document.querySelector("#last-semester").value == "February"){
 gradYear= parseInt(gradYear,10)+1;
 }
@@ -121,6 +192,11 @@ doc.text("© "+gradYear+" "+studentFirst+" "+studentMiddle+" "+studentLast, 4.25
 doc.text("A"+" "+capstoneDoc+" "+"submitted in partial fulfillment of the requirements for the degree of "+gradProgram, 4.25, 6,{ maxWidth: 4, align:'center'});
 doc.text("Pratt Institute", 4.25, 7,{ maxWidth: 4, align:'center'});
 doc.text(gradSemester+" "+gradYear, 4.25, 7.25,{ maxWidth: 4, align:'center'});
+doc.text("Received and approved:", 4.25, 8,{ maxWidth: 4, align:'center'});
+doc.text("Chairperson: "+chairFirst+" "+chairMiddle+" "+chairLast, 4.25, 8.25,'center');
+doc.text("Advisor: "+advisorFirst1+" "+advisorMiddle1+" "+advisorLast1, 4.25, 8.5,'center');
+doc.text("Advisor: "+advisorFirst2+" "+advisorMiddle2+" "+advisorLast2, 4.25, 8.75,'center');
+doc.text("Advisor: "+advisorFirst3+" "+advisorMiddle3+" "+advisorLast3, 4.25, 9,'center');
 doc.save(studentLast+"-thesis-title-page.pdf");
 doc = new jsPDF({
   orientation: "portrait",
