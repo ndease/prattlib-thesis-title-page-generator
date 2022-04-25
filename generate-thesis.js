@@ -55,8 +55,9 @@ doc.text(thesisTitle, textPlacement, 2,{ maxWidth: 6.5, align:'center'});
 doc.text("by", textPlacement, 2.75,'center');
 doc.text(studentFirst+" "+studentMiddle+" "+studentLast, textPlacement, 3,'center');
 doc.text("Received and approved:", textPlacement, 4,{ maxWidth: 4, align:'center'});
+if (chairFirst.length > 0){
 doc.text("Chairperson: "+chairFirst+" "+chairMiddle+" "+chairLast, textPlacement, 5,'center');
-
+}
 if (advisorFirst1.length > 0){
 doc.text("Advisor: "+advisorFirst1+" "+advisorMiddle1+" "+advisorLast1, textPlacement, 5.25,'center');
 }
