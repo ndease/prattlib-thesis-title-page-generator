@@ -1,6 +1,6 @@
 # thesis-title-page-generator
 
-[live demo](https://library.pratt.edu/thesis-title-page-generator)
+<!--[live demo](https://library.pratt.edu/thesis-title-page-generator)-->
 
 a web-based form that offers an easy selection of
 options and text fields to generate a unique set of title
